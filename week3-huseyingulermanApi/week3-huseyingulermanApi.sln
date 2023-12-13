@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "week3-huseyingulermanApi", "week3-huseyingulermanApi.csproj", "{28433F50-198A-4DD4-9F3F-1A81625ABEEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "week3-huseyingulerman.Api", "week3-huseyingulerman.Api.csproj", "{28433F50-198A-4DD4-9F3F-1A81625ABEEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "week3_huseyingulerman.Core", "..\week3_huseyingulerman.Core\week3_huseyingulerman.Core.csproj", "{416B1C83-5727-44E5-A2C4-C0A13E5B877D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "week3_huseyingulerman.Repository", "..\week3_huseyingulerman.Repository\week3_huseyingulerman.Repository.csproj", "{79AAE19D-7250-4ECB-8BED-3E6927A99248}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "week3_huseyingulerman.Service", "..\week3_huseyingulerman.Service\week3_huseyingulerman.Service.csproj", "{FCEE5980-6357-4D27-9137-31A64F03FB65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{28433F50-198A-4DD4-9F3F-1A81625ABEEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28433F50-198A-4DD4-9F3F-1A81625ABEEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28433F50-198A-4DD4-9F3F-1A81625ABEEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{416B1C83-5727-44E5-A2C4-C0A13E5B877D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{416B1C83-5727-44E5-A2C4-C0A13E5B877D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{416B1C83-5727-44E5-A2C4-C0A13E5B877D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{416B1C83-5727-44E5-A2C4-C0A13E5B877D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79AAE19D-7250-4ECB-8BED-3E6927A99248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79AAE19D-7250-4ECB-8BED-3E6927A99248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79AAE19D-7250-4ECB-8BED-3E6927A99248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79AAE19D-7250-4ECB-8BED-3E6927A99248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCEE5980-6357-4D27-9137-31A64F03FB65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCEE5980-6357-4D27-9137-31A64F03FB65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCEE5980-6357-4D27-9137-31A64F03FB65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCEE5980-6357-4D27-9137-31A64F03FB65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
