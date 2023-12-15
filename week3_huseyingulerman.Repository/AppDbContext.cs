@@ -1,20 +1,27 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using week3_huseyingulerman.Core.Entities;
 using week3_huseyingulerman.Core.Interfaces;
 
 namespace week3_huseyingulerman.Repository
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext : IdentityDbContext<AppUser>
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options):base (options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            
+
         }
+        public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Pet> Pets { get; set; }
+        public DbSet<Health> Healths { get; set; }
+        public DbSet<Activity> Activities { get; set; }
+        public DbSet<Food> MyProperty { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
