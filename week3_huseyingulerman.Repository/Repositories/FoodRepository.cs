@@ -20,10 +20,5 @@ namespace week3_huseyingulerman.Repository.Repositories
         {
 await _context.Foods.AddAsync(food);
         }
-
-        public Task<List<Food>> GetFoodByPetId(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

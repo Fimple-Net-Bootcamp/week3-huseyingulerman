@@ -39,11 +39,6 @@ namespace week3_huseyingulerman.Service.Servcices
             return AppResult<FoodDTO>.Success(StatusCodes.Status200OK, newResponse);
         }
 
-        public async Task<List<Food>> GetFoodByPetId(int id)
-        {
-            var foods = await _foodRepository.GetFoodByPetId(id);
-
-            return foods;
-        }
+      
     }
 }
