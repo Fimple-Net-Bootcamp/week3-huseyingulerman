@@ -19,12 +19,7 @@ namespace week3_huseyingulermanApi.Controllers
             this.userManager = _userManager;
           
         }
-
-
-
-
-        //// Kullanıcı İşlemleri
-
+        // Kullanıcı İşlemleri
         [HttpPost]
         public async Task<IActionResult> Create(UserCreateDTO user)
         {
@@ -37,31 +32,14 @@ namespace week3_huseyingulermanApi.Controllers
                 Email = user.Email,
             };
             IdentityResult result = await userManager.CreateAsync(appuser);
-                return CreatedAtAction(nameof(GetById), new { id = appuser.Id }, appuser);
-           
-           
+                return CreatedAtAction(nameof(GetById), new { userid = appuser.Id }, appuser);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(string userId)
+        [HttpGet("{userid}")]
+        public async Task<IActionResult> GetById(string userid)
         {
-            var _user = await userManager.FindByIdAsync(userId);  
+            var _user = await userManager.FindByIdAsync(userid);  
             return Ok(_user);
         }
-
-        //[HttpGet("kullanicilar/{kullaniciId}")]
-        //public ActionResult<Kullanici> GetKullanici(int kullaniciId)
-        //{
-        //    var kullanici = _context.Kullanicilar.Find(kullaniciId);
-
-        //    if (kullanici == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(kullanici);
-        //}
-
-
     }
 }

@@ -21,7 +21,7 @@ namespace week3_huseyingulerman.Repository
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Health> Healths { get; set; }
         public DbSet<Activity> Activities { get; set; }
-        public DbSet<Food> MyProperty { get; set; }
+        public DbSet<Food> Foods { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

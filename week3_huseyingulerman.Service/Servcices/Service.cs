@@ -47,29 +47,12 @@ namespace week3_huseyingulerman.Service.Servcices
             return AppResult<IEnumerable<TResponse>>.Success(StatusCodes.Status200OK, newResponses);
         }
 
-        public async Task<IAppResult<IEnumerable<TResponse>>> GetAllActiveAsync(Arrangement sort)
+        public async Task<IAppResult<IEnumerable<TResponse>>> GetAllActiveAsync()
         {
-            if (Arrangement.IdHighToLow== sort)
-            {
-                var entities = await _uow.GetRepository<TEntity>().GetAllActive().OrderByDescending(x => x.Id).ToListAsync(); var responseEntities = _mapper.Map<IEnumerable<TResponse>>(entities);
-                return AppResult<IEnumerable<TResponse>>.Success(StatusCodes.Status200OK, responseEntities);
-            }
-            else if (Arrangement.TemperatureLowToHigh== sort)
-            {return AppResult<IEnumerable<TResponse>>.Success(StatusCodes.Status200OK);
-                /*  var entities = await _uow.GetRepository<TEntity>().GetAllActive().OrderBy(x => x.Temperature).ToListAsync(); *//*var responseEntities = _mapper.Map<IEnumerable<TResponse>>(entities);*/
-                //return AppResult<IEnumerable<TResponse>>.Success(StatusCodes.Status200OK, responseEntities);
-            }
-            else if (Arrangement.TemperatureHighToLow== sort)
-            {
-                ///* var entities = await _uow.GetRepository<TEntity>().GetAllActive().OrderByDescending(x => x.Temperature).ToListAsync(); */var responseEntities = _mapper.Map<IEnumerable<TResponse>>(entities);
-                // return AppResult<IEnumerable<TResponse>>.Success(StatusCodes.Status200OK, responseEntities);
-                return AppResult<IEnumerable<TResponse>>.Success(StatusCodes.Status200OK);
-            }
-            else
-            {
-                var entities = await _uow.GetRepository<TEntity>().GetAllActive().ToListAsync(); var responseEntities = _mapper.Map<IEnumerable<TResponse>>(entities);
-                return AppResult<IEnumerable<TResponse>>.Success(StatusCodes.Status200OK, responseEntities);
-            }
+            var entities = await _uow.GetRepository<TEntity>().GetAllActive().ToListAsync();
+            var responseEntities = _mapper.Map<IEnumerable<TResponse>>(entities);
+
+            return AppResult<IEnumerable<TResponse>>.Success(StatusCodes.Status200OK, responseEntities);
         }
 
         public async Task<IAppResult<IEnumerable<TResponse>>> GetAllAsync()

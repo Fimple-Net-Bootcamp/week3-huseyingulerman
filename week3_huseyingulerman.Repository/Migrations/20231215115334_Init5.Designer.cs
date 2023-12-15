@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using week3_huseyingulerman.Repository;
 
@@ -11,9 +12,11 @@ using week3_huseyingulerman.Repository;
 namespace week3_huseyingulerman.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231215115334_Init5")]
+    partial class Init5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,21 @@ namespace week3_huseyingulerman.Repository.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("FoodPet", b =>
+                {
+                    b.Property<int>("FoodsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PetsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FoodsId", "PetsId");
+
+                    b.HasIndex("PetsId");
+
+                    b.ToTable("FoodPet");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -307,17 +325,12 @@ namespace week3_huseyingulerman.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PetId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PetId");
-
-                    b.ToTable("Foods");
+                    b.ToTable("MyProperty");
                 });
 
             modelBuilder.Entity("week3_huseyingulerman.Core.Entities.Health", b =>
@@ -365,7 +378,10 @@ namespace week3_huseyingulerman.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AppUserId")
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AppUserId1")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -394,9 +410,24 @@ namespace week3_huseyingulerman.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("AppUserId1");
 
                     b.ToTable("Pets");
+                });
+
+            modelBuilder.Entity("FoodPet", b =>
+                {
+                    b.HasOne("week3_huseyingulerman.Core.Entities.Food", null)
+                        .WithMany()
+                        .HasForeignKey("FoodsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("week3_huseyingulerman.Core.Entities.Pet", null)
+                        .WithMany()
+                        .HasForeignKey("PetsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -461,17 +492,6 @@ namespace week3_huseyingulerman.Repository.Migrations
                     b.Navigation("Pet");
                 });
 
-            modelBuilder.Entity("week3_huseyingulerman.Core.Entities.Food", b =>
-                {
-                    b.HasOne("week3_huseyingulerman.Core.Entities.Pet", "Pet")
-                        .WithMany("Foods")
-                        .HasForeignKey("PetId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pet");
-                });
-
             modelBuilder.Entity("week3_huseyingulerman.Core.Entities.Health", b =>
                 {
                     b.HasOne("week3_huseyingulerman.Core.Entities.Pet", "Pet")
@@ -487,7 +507,7 @@ namespace week3_huseyingulerman.Repository.Migrations
                 {
                     b.HasOne("week3_huseyingulerman.Core.Entities.AppUser", "AppUser")
                         .WithMany("Pets")
-                        .HasForeignKey("AppUserId")
+                        .HasForeignKey("AppUserId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -502,8 +522,6 @@ namespace week3_huseyingulerman.Repository.Migrations
             modelBuilder.Entity("week3_huseyingulerman.Core.Entities.Pet", b =>
                 {
                     b.Navigation("Activities");
-
-                    b.Navigation("Foods");
 
                     b.Navigation("Healths");
                 });

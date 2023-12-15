@@ -21,6 +21,6 @@ namespace week3_huseyingulerman.Core.Services
         Task<IAppResult<IEnumerable<TResponse>>> Where(Expression<Func<TEntity, bool>> expression);
         Task<IAppResult<TResponse>> GetByIdAsync(int id);
         Task<IAppResult<IEnumerable<TResponse>>> GetAllAsync();
-        Task<IAppResult<IEnumerable<TResponse>>> GetAllActiveAsync(Arrangement sort);
+        Task<IAppResult<IEnumerable<TResponse>>> GetAllActiveAsync();
     }
 }
